@@ -25,17 +25,13 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productId;
-
-    @Min(value = 4)
-    @Max(value = 16)
-    private String sku;
+    private int id;
 
     @Column(length = 20)
-    private String name;
+    private String category;
 
     @Min(value = 0)
-    @Max(value = 1000)
+    @Max(value = 2000)
     private int quantity;
 
     @Column(length = 7)
@@ -55,24 +51,19 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, String sku, String name, int quantity, String storageLocation) {
-        this.productId = productId;
-        this.sku = sku;
-        this.name = name;
+    public Product(int productId, String sku, String categpory, int quantity, String storageLocation) {
+        this.id = productId;
+        this.category = category;
         this.quantity = quantity;
         this.storageLocation = storageLocation;
     }
 
     public int getProductId() {
-        return productId;
+        return id;
     }
 
-    public String getSku() {
-        return sku;
-    }
-
-    public String getName() {
-        return name;
+    public String getCategory() {
+        return category;
     }
 
     public int getQuantity() {
@@ -84,15 +75,11 @@ public class Product {
     }
 
     public void setProductId(int productId) {
-        this.productId = productId;
+        this.id = productId;
     }
 
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String category) {
+        this.category = category;
     }
 
     public void setQuantity(int quantity) {
@@ -113,7 +100,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product [productId=" + productId + ", sku=" + sku + ", name=" + name + ", quantity=" + quantity
+        return "Product [productId=" + id + ", category=" + category + ", quantity=" + quantity
                 + ", storageLocation=" + storageLocation + ", warehouse" + (warehouse == null ? null : warehouse.getName()) + "]";
     }
 

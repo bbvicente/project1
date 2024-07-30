@@ -24,23 +24,23 @@ public class WarehouseService {
         return repo.findById(id);
     }
     
-    public void savWarehouse(Warehouse wh) {
+    public void saveWarehouse(Warehouse wh) {
 
         if (repo.existsById(wh.getWarehouseId())) {
             repo.updateWarehouse(wh.getWarehouseId(), wh); 
-            //Add an exception
+        } else {
+            repo.saveWarehouse(wh);
         }
-        repo.savWarehouse(wh);
     }
     
     public void updateWarehouse(int id, Warehouse wh) {
 
         if (!repo.existsById(id)) {
-            repo.savWarehouse(wh);
+            repo.saveWarehouse(wh);
             throw new NoSuchElementException("The warehouse with id " + id + " does not exist.Creating a new warehouse!");
         }
         wh.setWarehouseId(id);
-        repo.savWarehouse(wh);
+        repo.saveWarehouse(wh);
     }
 
     public void deleteWarehouse(int id) {

@@ -57,8 +57,8 @@ public class WarehouseController {
     
     @PostMapping
     public void createWarehouse(@Valid @RequestBody Warehouse wh) {
-        // add some logic
-        service.savWarehouse(wh);
+        
+        service.saveWarehouse(wh);
     }
     
     @PutMapping("/{id}")

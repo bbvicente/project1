@@ -3,9 +3,13 @@ package com.skillstorm.services;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
+import com.skillstorm.aspects.AlreadyExistsException;
 import com.skillstorm.models.Product;
 import com.skillstorm.repositories.ProductRepository;
 
+@Service
 public class ProductService {
 
     private ProductRepository repo;
@@ -21,13 +25,15 @@ public class ProductService {
         return repo.findById(id);
     }
     
-    public void saveProduct(Product p) {
+    public void saveProduct(Product p) throws AlreadyExistsException {
 
         if (repo.existsById(p.getProductId())) {
-            repo.updateProduct(p.getProductId(), p);
-            //Add an exception
+            repo.updateProduct(p.getProductId(), p);  //update just the quantity
+            throw new AlreadyExistsException("Product with id " + p.getProductId() + " already exists in the warehouse. Updating " + p.getCategory());
         }
         repo.saveProduct(p);
+
+        //check if add new product exceeds the capacity of the warehouse
     }
     
     public void updateProduct(int id, Product p) {
@@ -44,10 +50,4 @@ public class ProductService {
         repo.deleteProduct(id);
     }
 
-    /*
-    TODO:
-        get all categories
-        get Product current inventory
-        get products in a Product
-     */
 }

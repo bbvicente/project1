@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skillstorm.aspects.AlreadyExistsException;
 import com.skillstorm.models.Product;
-import com.skillstorm.models.Warehouse;
 import com.skillstorm.services.ProductService;
-import com.skillstorm.services.WarehouseService;
 
 import jakarta.validation.Valid;
 @RestController
@@ -44,18 +43,15 @@ public class ProductController {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         }
-
-        /*
-        TODO:
-            get all categories
-            get Product current inventory
-            get products in a Product
-        */
         
         @PostMapping
         public void createProduct(@Valid @RequestBody Product p) {
-            // add some logic
-            service.saveProduct(p);
+            try {
+                service.saveProduct(p);
+            } catch (AlreadyExistsException e) {
+                System.out.println("Product with id " + p.getProductId() + " already exists!");
+                e.printStackTrace();
+            } //fix this
         }
         
         @PutMapping("/{id}")

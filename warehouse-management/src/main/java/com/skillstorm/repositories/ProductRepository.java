@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.skillstorm.models.Product;
 
@@ -21,7 +22,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
      * @return list of Product
      */
     Optional<Product> findById(Integer id);
-    
+
      /**
      * Creates a new Product and adds it to the Product database
      * @param Product
@@ -41,12 +42,4 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
      * @param id
      */
     void deleteProduct(int id);
-
-  /*
-    TODO:
-        get all categories
-        get Product current inventory
-        get products in a Product
-        get Product by name
-     */
 }

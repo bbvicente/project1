@@ -1,6 +1,7 @@
 package com.skillstorm.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.skillstorm.models.Warehouse;
 import java.util.List;
@@ -22,12 +23,15 @@ public interface WarehouseRepository extends JpaRepository<Warehouse, Integer>{
      */
     Optional<Warehouse> findById(Integer id);
     
+    @Query(value = "select S from Movie m ORDER BY rating LIMIT 3", nativeQuery = false)
+    int getCurrInventory();
+    
      /**
      * Creates a new warehouse and adds it to the warehouses database
      * @param warehouse
      * @return Warehouse
      */
-    Warehouse savWarehouse(Warehouse warehouse);
+    Warehouse saveWarehouse(Warehouse warehouse);
     
     /**
      * Queries the Warehouse database and updates the content of a warehouse with a partiuclar id

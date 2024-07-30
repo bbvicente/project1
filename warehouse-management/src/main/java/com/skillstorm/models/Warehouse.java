@@ -23,7 +23,7 @@ public class Warehouse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int warehouseId;
+    private int id;
 
     @Column(length = 10)
     private String name;
@@ -46,7 +46,7 @@ public class Warehouse {
     }
 
     public Warehouse(int warehouseId, String name, String city, String state, int capacity) {
-        this.warehouseId = warehouseId;
+        this.id = warehouseId;
         this.name = name;
         this.city = city;
         this.state = state;
@@ -54,7 +54,7 @@ public class Warehouse {
     }
 
     public int getWarehouseId() {
-        return warehouseId;
+        return id;
     }
 
     public String getName() {
@@ -74,7 +74,7 @@ public class Warehouse {
     }
 
     public void setWarehouseId(int warehouseId) {
-        this.warehouseId = warehouseId;
+        this.id = warehouseId;
     }
 
     public void setName(String name) {
@@ -95,7 +95,7 @@ public class Warehouse {
 
     @Override
     public String toString() {
-        return "Warehouse [warehouseId=" + warehouseId + ", name=" + name + ", city=" + city + ", state=" + state
+        return "Warehouse [warehouseId=" + id + ", name=" + name + ", city=" + city + ", state=" + state
                 + ", capacity=" + capacity + "]";
     }
 
