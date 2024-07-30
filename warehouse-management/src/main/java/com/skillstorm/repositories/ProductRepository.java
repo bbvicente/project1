@@ -28,18 +28,18 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
      * @param Product
      * @return Product
      */
-    Product saveProduct(Product p);
+    // Product saveProduct(Product p);
     
-    /**
-     * Queries the Product database and updates the content of a Product with a partiuclar id
-     * @param id
-     * @param pproduct
-     */
-    void updateProduct(int id, Product p);
+    // /**
+    //  * Queries the Product database and updates the content of a Product with a partiuclar id
+    //  * @param id
+    //  * @param pproduct
+    //  */
+    // void updateProduct(int id, Product p);
 
-    /**
-     * Queries the Product database and deletes the product with a particular id
-     * @param id
-     */
-    void deleteProduct(int id);
+    // /**
+    //  * Queries the Product database and deletes the product with a particular id
+    //  * @param id
+    //  */
+    // void deleteProduct(int id);
 }

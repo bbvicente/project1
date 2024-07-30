@@ -44,24 +44,24 @@ public class ProductController {
             }
         }
         
-        @PostMapping
-        public void createProduct(@Valid @RequestBody Product p) {
-            try {
-                service.saveProduct(p);
-            } catch (AlreadyExistsException e) {
-                System.out.println("Product with id " + p.getProductId() + " already exists!");
-                e.printStackTrace();
-            } //fix this
-        }
+        // @PostMapping
+        // public void createProduct(@Valid @RequestBody Product p) {
+        //     try {
+        //         service.saveProduct(p);
+        //     } catch (AlreadyExistsException e) {
+        //         System.out.println("Product with id " + p.getProductId() + " already exists!");
+        //         e.printStackTrace();
+        //     } //fix this
+        // }
         
-        @PutMapping("/{id}")
-        public void updateProduct(@PathVariable int id, @RequestBody Product p) {
-            service.updateProduct(id, p);
-        }
+        // @PutMapping("/{id}")
+        // public void updateProduct(@PathVariable int id, @RequestBody Product p) {
+        //     service.updateProduct(id, p);
+        // }
         
-        @DeleteMapping("/{id}")
-        @ResponseStatus(code = HttpStatus.NO_CONTENT)
-        public void deleteProduct(@PathVariable int id) {
-            service.deleteProduct(id);
-        }
+        // @DeleteMapping("/{id}")
+        // @ResponseStatus(code = HttpStatus.NO_CONTENT)
+        // public void deleteProduct(@PathVariable int id) {
+        //     service.deleteProduct(id);
+        // }
 }

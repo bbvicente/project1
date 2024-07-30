@@ -17,40 +17,29 @@ public class WarehouseService {
         this.repo = repo;
     }
     public Iterable<Warehouse> findAllWarehouses() {
-        return repo.findAll();
+        return repo.findAllWarehouses();
     }
     
     public Optional<Warehouse> findWarehouseById(int id) {
         return repo.findById(id);
     }
     
-    public void saveWarehouse(Warehouse wh) {
-
-        if (repo.existsById(wh.getWarehouseId())) {
-            repo.updateWarehouse(wh.getWarehouseId(), wh); 
-        } else {
-            repo.saveWarehouse(wh);
-        }
+    public Warehouse saveWarehouse(Warehouse wh) {
+        return repo.save(wh);
     }
     
-    public void updateWarehouse(int id, Warehouse wh) {
+    // public void updateWarehouse(int id, Warehouse wh) {
 
-        if (!repo.existsById(id)) {
-            repo.saveWarehouse(wh);
-            throw new NoSuchElementException("The warehouse with id " + id + " does not exist.Creating a new warehouse!");
-        }
-        wh.setWarehouseId(id);
-        repo.saveWarehouse(wh);
-    }
+    //     if (!repo.existsById(id)) {
+    //         repo.saveWarehouse(wh);
+    //         throw new NoSuchElementException("The warehouse with id " + id + " does not exist.Creating a new warehouse!");
+    //     }
+    //     wh.setWarehouseId(id);
+    //     repo.saveWarehouse(wh);
+    // }
 
-    public void deleteWarehouse(int id) {
-        repo.deleteWarehouse(id);
-    }
+    // public void deleteWarehouse(int id) {
+    //     repo.deleteWarehouse(id);
+    // }
 
-    /*
-    TODO:
-        get all categories
-        get warehouse current inventory
-        get products in a warehouse
-     */
 }

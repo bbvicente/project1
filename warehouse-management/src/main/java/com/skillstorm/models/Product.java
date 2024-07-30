@@ -51,14 +51,14 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, String sku, String categpory, int quantity, String storageLocation) {
+    public Product(int productId, String sku, String category, int quantity, String storageLocation) {
         this.id = productId;
         this.category = category;
         this.quantity = quantity;
         this.storageLocation = storageLocation;
     }
 
-    public int getProductId() {
+    public int getId() {
         return id;
     }
 
@@ -74,7 +74,7 @@ public class Product {
         return storageLocation;
     }
 
-    public void setProductId(int productId) {
+    public void setId(int productId) {
         this.id = productId;
     }
 

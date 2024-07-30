@@ -38,7 +38,7 @@ public class Warehouse {
     @Max(value = 1000)
     private int capacity;
 
-    @OneToMany(mappedBy = "product", targetEntity = Product.class)
+    @OneToMany(mappedBy = "warehouse", targetEntity = Product.class)
     @JsonBackReference
     List<Product> products;
     
@@ -53,7 +53,7 @@ public class Warehouse {
         this.capacity = capacity;
     }
 
-    public int getWarehouseId() {
+    public int getId() {
         return id;
     }
 
@@ -73,7 +73,7 @@ public class Warehouse {
         return capacity;
     }
 
-    public void setWarehouseId(int warehouseId) {
+    public void setId(int warehouseId) {
         this.id = warehouseId;
     }
 

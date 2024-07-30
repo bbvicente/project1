@@ -14,7 +14,8 @@ public interface WarehouseRepository extends JpaRepository<Warehouse, Integer>{
      * Queries the Warehouse database and return a list of all the warehouses
      * @return list of warehouses
      */
-    List<Warehouse> findAll();
+    @Query(value = "SELECT w FROM Warehouse w", nativeQuery = false)
+    List<Warehouse> findAllWarehouses();
 
     /**
      * Queries the Warehouse database and return a list of warehouses with a particular id
@@ -23,28 +24,20 @@ public interface WarehouseRepository extends JpaRepository<Warehouse, Integer>{
      */
     Optional<Warehouse> findById(Integer id);
     
-    @Query(value = "select S from Movie m ORDER BY rating LIMIT 3", nativeQuery = false)
-    int getCurrInventory();
-    
-     /**
-     * Creates a new warehouse and adds it to the warehouses database
-     * @param warehouse
-     * @return Warehouse
-     */
-    Warehouse saveWarehouse(Warehouse warehouse);
+    //int getCurrInventory();
     
     /**
      * Queries the Warehouse database and updates the content of a warehouse with a partiuclar id
      * @param id
      * @param warehouse
      */
-    void updateWarehouse(int id, Warehouse warehouse);
+   //void updateWarehouse(int id, Warehouse warehouse);
 
     /**
      * Queries the Warehouse database and deletes the warehouse with a particular id
      * @param id
      */
-    void deleteWarehouse(int id);
+   // void deleteWarehouse(int id);
 
   /*
     TODO:

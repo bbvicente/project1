@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "WarehouseManagementApplication",
+            "request": "launch",
+            "mainClass": "com.skillstorm.WarehouseManagementApplication",
+            "projectName": "warehouse-management"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,7 +23,7 @@
             "request": "launch",
             "mainClass": "com.skillstorm.warehouse_management.WarehouseManagementApplication",
             "projectName": "warehouse-management",
-            "env":{
+            "env": {
                 "db-pwd": "Jluis3192"
             }
         }
