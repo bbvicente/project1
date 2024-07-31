@@ -18,6 +18,8 @@ import com.skillstorm.models.Product;
 import com.skillstorm.services.ProductService;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -87,5 +89,10 @@ public class ProductController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteProduct(@PathVariable int id) {
         service.deleteProduct(id);
+    }
+
+    @GetMapping("/current-inventory/{id}")
+    public int currWarehouseInventory(@PathVariable int id){
+        return service.currWarehouseInventory(id);
     }
 }

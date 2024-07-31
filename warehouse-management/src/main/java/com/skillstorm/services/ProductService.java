@@ -68,4 +68,8 @@ public class ProductService {
     public void deleteProduct(int id) {
         repo.deleteById(id);
     }
+
+    public int currWarehouseInventory(int id){
+        return repo.currWarehouseInventory(id);
+    }
 }
