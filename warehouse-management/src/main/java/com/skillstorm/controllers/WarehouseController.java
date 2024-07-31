@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
+ 
 @RestController
 @RequestMapping("/warehouses")
 public class WarehouseController {
@@ -31,11 +31,20 @@ public class WarehouseController {
         this.service = service;
     }
 
+    /**
+     * HTTP GET request: List of all warehouses
+     * @return list of warehouses
+     */
     @GetMapping
     public Iterable<Warehouse> findAllWarehouses() {
         return service.findAllWarehouses();
     }
     
+    /**
+     * HTTP GET request: gets the warehouses with a particular id
+     * @param id
+     * @return Warehouse with id
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Warehouse> findWarehouseById(@PathVariable int id) {
         Optional<Warehouse> wh = service.findWarehouseById(id);
@@ -47,20 +56,40 @@ public class WarehouseController {
         }
     }
 
+    /**
+     * HTTP POST request: creates a new warehouse, adds it to the database or updates it if it exists
+     * @param wh
+     * @return Warehouse 
+     */
     @PostMapping
     public Warehouse createWarehouse(@Valid @RequestBody Warehouse wh) {
         
-        return service.saveWarehouse(wh);
+        return service.saveWarehouse(wh); //maybe check if wh exist in the data base by name
     }
     
-    // @PutMapping("/{id}")
-    // public void updateWarehouse(@PathVariable int id, @RequestBody Warehouse wh) {
-    //     service.updateWarehouse(id, wh);
-    // }
+    /**
+     * HTTP PUT request: updates the content of a warehouse
+     * @param id
+     * @param wh
+     * @return OK or NO_CONTENT HTTP status code
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<Warehouse> updateWarehouse(@PathVariable int id, @RequestBody Warehouse wh) {
+        try {
+            service.updateWarehouse(id, wh); 
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+    }
     
-    // @DeleteMapping("/{id}")
-    // @ResponseStatus(code = HttpStatus.NO_CONTENT)
-    // public void deleteWarehouse(@PathVariable int id) {
-    //     service.deleteWarehouse(id);
-    // }
+    /**
+     * HTTP DELETE request: deletes the warehouse with a particular id
+     * @param id
+     */
+    @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void deleteWarehouse(@PathVariable int id) {
+        service.deleteWarehouse(id);
+    }
 }

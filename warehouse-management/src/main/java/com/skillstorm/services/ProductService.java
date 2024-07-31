@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.skillstorm.aspects.AlreadyExistsException;
 import com.skillstorm.models.Product;
 import com.skillstorm.models.Warehouse;
 import com.skillstorm.repositories.ProductRepository;
@@ -14,47 +13,59 @@ import com.skillstorm.repositories.ProductRepository;
 public class ProductService {
 
     private ProductRepository repo;
-    private Warehouse wh;
+    //private Warehouse wh;
     
-    public ProductService(ProductRepository repo, Warehouse wh){
+    public ProductService(ProductRepository repo){
         this.repo = repo;
-        this.wh = wh;
+        //this.wh = wh;
     }
+
+    /**
+     * Queries the Product database and return a list of all the products
+     * @return list of products
+     */
     public Iterable<Product> findAllProducts() {
         return repo.findAll();
     }
     
+    /**
+     * Queries the Product database and return the product with a particular id
+     * @param id
+     * @return Product with id
+     */
     public Optional<Product> findProductById(int id) {
         return repo.findById(id);
     }
     
-    // public void saveProduct(Product p) throws AlreadyExistsException {
-
-    //     if (repo.existsById(p.getProductId())) {
-    //         repo.updateProduct(p.getProductId(), p);  //update just the quantity
-    //         throw new AlreadyExistsException("Product with id " + p.getProductId() + " already exists in the warehouse. Updating " + p.getCategory());
-    //     }
-    //     repo.saveProduct(p);
-
-    //     //check if add new product exceeds the capacity of the warehouse
-    // }
+   /**
+     * Creates a new product and adds it to the database or updates it if it exists
+     * @param p
+     * @return Product 
+     */
+    public Product saveProduct(Product p) {
+        return repo.save(p);
+    }
     
-    // public void updateProduct(int id, Product p) {
+    /**
+     * Updates the content of a product or throws an error if it does not exist
+     * @param id
+     * @param p
+     * @return Warehouse 
+     */
+    public void updateProduct(int id, Product p) {
 
-    //     if (!repo.existsById(id)) {
-    //         repo.saveProduct(p);
-    //         throw new NoSuchElementException("The product with id " + id + " does not exist.Creating a new product!");
-    //     }
-    //     p.setProductId(id);
-    //     repo.saveProduct(p);
-    // }
+        if (!repo.existsById(id)) {
+            throw new NoSuchElementException("The warehouse with id " + id + " does not exist!");
+        }
+        p.setId(id);
+        repo.save(p);
+    }
 
-    // /**
-    //  * Queries the Product database and deletes the product with a particular id
-    //  * @param id
-    //  */
-    // public void deleteProduct(int id) {
-    //     repo.deleteProduct(id);
-    // }
-
+    /**
+     * Deletes the product with a particular id
+     * @param id
+     */
+    public void deleteProduct(int id) {
+        repo.deleteById(id);
+    }
 }
