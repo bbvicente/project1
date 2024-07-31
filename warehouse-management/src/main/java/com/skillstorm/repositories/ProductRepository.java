@@ -1,10 +1,12 @@
 package com.skillstorm.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.skillstorm.models.Product;
-import java.util.List;
+import com.skillstorm.models.Warehouse;
 
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
@@ -12,12 +14,12 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
     // get warehouse current inventory - product
     // get all categories
 
-    //@Query(value = "select sum(m.quantity) from Product as m where warehouse_id = id")
     //@Query(value = "SELECT SUM(m.quantity) FROM Product m WHERE m.warehouse_id = ?1")
     @Query(value = "SELECT SUM(quantity) FROM products WHERE warehouse_id = ?1", nativeQuery = true)
-    int currWarehouseInventory(int id);
+    int currWarehouseInventoryById(int id);
 
-    // SELECT SUM(quantity) 
-    // FROM products 
-    // WHERE warehouse_id = 2;
+    // @Query(value = "SELECT SUM(quantity) FROM products WHERE warehouse_id = ?1", nativeQuery = true)
+    @Query(value = "SELECT wh.name, SUM(p.quantity), wh.capacity FROM products p INNER JOIN warehouses wh ON p.warehouse_id = wh.id  GROUP BY wh.id, wh.name", nativeQuery = true)
+    List<Product> totalCurrWarehouseInventory(Warehouse wh);
+    
 }

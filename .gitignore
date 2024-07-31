@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### JSX ###
+warehouse-app/warehouse-app/node_modules

@@ -2,6 +2,7 @@ package com.skillstorm.controllers;
 
 import java.util.Optional;
 
+import org.hibernate.mapping.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.models.Product;
+import com.skillstorm.models.Warehouse;
 import com.skillstorm.services.ProductService;
 
 import jakarta.validation.Valid;
@@ -91,8 +93,8 @@ public class ProductController {
         service.deleteProduct(id);
     }
 
-    @GetMapping("/current-inventory/{id}")
-    public int currWarehouseInventory(@PathVariable int id){
-        return service.currWarehouseInventory(id);
-    }
+    // @GetMapping("/current-inventory")
+    // public Iterable<Product> currWarehouseInventory(){
+    //     return service.currWarehouseInventory();
+    // }
 }

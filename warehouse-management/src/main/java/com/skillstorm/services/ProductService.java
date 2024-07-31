@@ -1,23 +1,26 @@
 package com.skillstorm.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.skillstorm.models.Product;
 import com.skillstorm.models.Warehouse;
 import com.skillstorm.repositories.ProductRepository;
+import com.skillstorm.repositories.WarehouseRepository;
 
 @Service
 public class ProductService {
 
     private ProductRepository repo;
-    //private Warehouse wh;
+    //private WarehouseRepository wh;
     
     public ProductService(ProductRepository repo){
         this.repo = repo;
-        //this.wh = wh;
+       // this.wh = wh;
     }
 
     /**
@@ -43,6 +46,7 @@ public class ProductService {
      * @return Product 
      */
     public Product saveProduct(Product p) {
+        // if((repo.currWarehouseInventory(p.getId() + p.getQuantity()) > )
         return repo.save(p);
     }
     
@@ -69,7 +73,8 @@ public class ProductService {
         repo.deleteById(id);
     }
 
-    public int currWarehouseInventory(int id){
-        return repo.currWarehouseInventory(id);
-    }
+    // public List<Product> currWarehouseInventory(@Param("courseId") Long courseId){
+    //     System.out.println(repo.currWarehouseInventory(wh));
+    //     return repo.currWarehouseInventory(wh);
+    // }
 }
