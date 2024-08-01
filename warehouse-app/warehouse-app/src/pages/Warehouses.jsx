@@ -4,7 +4,7 @@ import { Button } from '@trussworks/react-uswds'
 
 export default function Warehouses() {
   
-  const [shouldRender, setShouldRender] = useState(true);
+  const [shouldRender, setShouldRender] = useState(0);
 
     return (<>
         <h1>Warehouses</h1>

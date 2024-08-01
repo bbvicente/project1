@@ -32,7 +32,7 @@ public class Product {
     private String category;
 
     @Min(value = 0)
-    @Max(value = 2000)
+    @Max(value = 1000)
     private int quantity;
 
     @Column(length = 7)
