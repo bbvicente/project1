@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
 
 export const WarehouseForm = () => {
-
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   function handleSubmit(e) {
@@ -17,10 +16,10 @@ export const WarehouseForm = () => {
     const data = new FormData(e.target);
 
     const newWarehouse = {
-        whName: data.get("name"),
-        whCity: data.get("city"),
-        whState: data.get("state"),
-        whCapacity: data.get("cappacity")
+        name: data.get("name"),
+        city: data.get("city"),
+        state: data.get("state"),
+        capacity: data.get("capacity")
     }
 
     e.target.reset();

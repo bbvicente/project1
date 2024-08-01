@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.models.Product;
 import com.skillstorm.models.Warehouse;
+import com.skillstorm.models.WarehouseInventorySum;
 import com.skillstorm.services.ProductService;
 
 import jakarta.validation.Valid;
@@ -95,8 +96,12 @@ public class ProductController {
         service.deleteProduct(id);
     }
 
-    // @GetMapping("/current-inventory")
-    // public Iterable<Product> currWarehouseInventory(){
-    //     return service.currWarehouseInventory();
-    // }
+    @GetMapping("/current-inventory/{id}")
+    public int currWarehouseInventory(@PathVariable int id){
+        return service.currWarehouseInventory(id);
+    }
+    @GetMapping("/current-inventory")
+    public Iterable<WarehouseInventorySum> currTotalWarehouseInventory(){
+        return service.currWarehouseInventory();
+    }
 }

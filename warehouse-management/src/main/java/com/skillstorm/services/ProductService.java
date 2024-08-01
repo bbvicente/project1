@@ -11,16 +11,17 @@ import com.skillstorm.models.Product;
 import com.skillstorm.models.Warehouse;
 import com.skillstorm.repositories.ProductRepository;
 import com.skillstorm.repositories.WarehouseRepository;
+import com.skillstorm.models.WarehouseInventorySum;
 
 @Service
 public class ProductService {
 
     private ProductRepository repo;
-    //private WarehouseRepository wh;
+    private WarehouseRepository wh_repo;
     
-    public ProductService(ProductRepository repo){
+    public ProductService(ProductRepository repo, WarehouseRepository wh_repo){
         this.repo = repo;
-       // this.wh = wh;
+        this.wh_repo = wh_repo;
     }
 
     /**
@@ -46,8 +47,25 @@ public class ProductService {
      * @return Product 
      */
     public Product saveProduct(Product p) {
-        // if((repo.currWarehouseInventory(p.getId() + p.getQuantity()) > )
-        return repo.save(p);
+        int wh_id = p.getWarehouse_id().getId();
+        System.out.println(wh_id);
+        Warehouse wh = wh_repo.findById(wh_id).get();
+        System.out.println(wh);
+
+        
+        p.setWarehouse_id(wh);
+        
+        
+        int capacity = wh.getCapacity();
+        System.out.println(capacity);
+
+        if((currWarehouseInventory(wh_id) + p.getQuantity()) < capacity){
+            System.out.println("Capacity not exceeded");
+            return repo.save(p);
+        } else {
+            throw new RuntimeException("Capacity exceeded");
+        }
+        
     }
     
     /**
@@ -73,8 +91,11 @@ public class ProductService {
         repo.deleteById(id);
     }
 
-    // public List<Product> currWarehouseInventory(@Param("courseId") Long courseId){
-    //     System.out.println(repo.currWarehouseInventory(wh));
-    //     return repo.currWarehouseInventory(wh);
-    // }
+    public int currWarehouseInventory(int id){
+        return repo.sumQuantityByWarehouse(id);
+    }
+
+    public Iterable<WarehouseInventorySum> currWarehouseInventory(){
+        return repo.totalCurrWarehouseInventory();
+    }
 }

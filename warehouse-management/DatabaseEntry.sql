@@ -14,7 +14,7 @@ create table PRODUCTS (
 	id SERIAL PRIMARY KEY,
 	category VARCHAR(20),
 	quantity INT,
-	storageLocation VARCHAR(7),
+	storage_location VARCHAR(7),
 	warehouse_id INT,
 	FOREIGN KEY (warehouse_id) REFERENCES WAREHOUSES(id)
 );

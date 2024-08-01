@@ -18,6 +18,7 @@ const WarehouseList = () =>  {
         fetch(url)
             .then(data => data.json()) 
             .then(returnedData => {
+                console.log(returnedData);
                 setWarehouses(returnedData);
                 setLoaded(true);
             })
@@ -29,13 +30,12 @@ const WarehouseList = () =>  {
     return (
         <>
             <div>
-            <Button type="button" base>Add</Button>
             <GridContainer>
                 <Grid row>
                     <Grid col="1"></Grid>
                     <Grid col="10">
 
-                        <Table style={{ borderCollpase: true, borderColor: 0x000, borderWidth: 5 }} bordered fullWidth striped>
+                        <Table bordered className="table-border">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -46,13 +46,13 @@ const WarehouseList = () =>  {
                             </thead>
                             <tbody>
                                 {loaded ?
-                                    warehouse.map(
-                                        warehouse => (
-                                            <tr key={warehouse.id}>
-                                                <td>{warehouse.name}</td>
-                                                <td>{warehouse.city}</td>
-                                                <td>{warehouse.state}</td>
-                                                <td>{warehouse.capacity}</td>
+                                    warehouses.map(
+                                        warehouses => (
+                                            <tr key={warehouses.id}>
+                                                <td>{warehouses.name}</td>
+                                                <td>{warehouses.city}</td>
+                                                <td>{warehouses.state}</td>
+                                                <td>{warehouses.capacity}</td>
                                             </tr>
                                         )) :
                                     (<tr><td colSpan='2'>Loading...</td></tr>)

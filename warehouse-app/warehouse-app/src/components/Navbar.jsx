@@ -1,6 +1,6 @@
 import React from 'react'
 import hummel from '../assets/hummel.png'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
 export default function NavBar() {
@@ -13,6 +13,7 @@ export default function NavBar() {
                 <li className='active'><Link to = '/inventory'>Inventory</Link></li>
             </ul>
         </nav>
+
     </>)
 }
 
