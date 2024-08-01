@@ -22,7 +22,6 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "products")
-@CrossOrigin(origins = "http://localhost:5173") //might change!!!
 public class Product {
 
     @Id

@@ -8,7 +8,6 @@ body{
 
 .main-body{
   margin: 1rem;
-  text-align: center;
 }
 
 .nav{
@@ -41,3 +40,18 @@ body{
   background-color: black;
 }
 
+.container-center{
+  display:flex;
+}
+
+.form-container{
+  padding: 2rem;
+  line-height: 4cap;
+}
+
+.create-button{
+  background-color: rgb(235, 165, 35);
+  text-align: right;
+  position: absolute;
+  right: 30px;
+}

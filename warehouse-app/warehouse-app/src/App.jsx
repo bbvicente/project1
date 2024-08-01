@@ -1,10 +1,13 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
-import Warehouses from './pages/Warehouses'
 import Inventory from './pages/Inventory'
+import Warehouses from './pages/Warehouses'
+//import { WarehouseForm } from './components/WarehouseForm'
+//import WarehouseList from './components/WarehouseList'
 import { Routes, Route } from 'react-router-dom'
-
+//import { Button, GridContainer } from '@trussworks/react-uswds'
+//import { CreateWarehouse } from './pages/CreateWarehouse'
 
 function App() {
 
@@ -18,6 +21,12 @@ function App() {
           </Routes>
         </div>
         
+        {/* <main className="container-center">
+          <GridContainer containerSize="desktop">
+            <WarehouseList />
+          </GridContainer>
+      </main> */}
   </>)
 }
+
 export default App

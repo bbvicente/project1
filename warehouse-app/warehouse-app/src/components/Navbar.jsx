@@ -3,7 +3,7 @@ import hummel from '../assets/hummel.png'
 import { Link, Navigate } from 'react-router-dom'
 
 
-export default function Navbar (){
+export default function NavBar() {
     
     return (<>
         <nav className='nav'>
@@ -15,3 +15,4 @@ export default function Navbar (){
         </nav>
     </>)
 }
+

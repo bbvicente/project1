@@ -1,5 +1,6 @@
+
 export default function Inventory() {
     return (
-      <h1>Warehouses Inventory</h1>
+      <h1>Current Inventory</h1>
     )
   }

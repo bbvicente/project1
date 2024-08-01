@@ -2,6 +2,8 @@ package com.skillstorm.models;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -35,7 +37,6 @@ public class Warehouse {
     private String state;
 
     @Min(value = 0)
-    @Max(value = 1000)
     private int capacity;
 
     @OneToMany(mappedBy = "warehouse", targetEntity = Product.class)
