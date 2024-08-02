@@ -8,6 +8,7 @@ import { WarehouseForm } from './components/WarehouseForm'
 import { ProductForm } from './components/ProductForm'
 import { Routes, Route } from 'react-router-dom'
 import { WarehouseUpdateForm } from './components/WarehouseUpdateForm'
+import { ProductUpdateForm } from './components/ProductUpdatedForm'
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
             <Route path='/create-warehouse' element={<WarehouseForm/>}></Route>
             <Route path='/create-product' element={<ProductForm/>}></Route>
             <Route path='/update-warehouse' element={<WarehouseUpdateForm/>}></Route>
-            {/* <Route path='/update-product' element={<ProductUpdateForm/>}></Route> */}
+            <Route path='/update-product' element={<ProductUpdateForm/>}></Route>
           </Routes>
         </div> 
   </>)

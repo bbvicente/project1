@@ -2,7 +2,6 @@ package com.skillstorm.controllers;
 
 import java.util.Optional;
 
-import org.hibernate.mapping.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
