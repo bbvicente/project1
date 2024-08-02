@@ -48,9 +48,14 @@ export const ProductUpdateForm = () => {
       <h1>Update a Product</h1>
 
       <Form onSubmit={handleSubmit} className="form-container">
+        <Label htmlFor="id">Product ID</Label>
+        <TextInput id="id" name="id" type="text" />
+        
+        <div>
         <Label htmlFor="category">Product Category</Label>
         <TextInput id="category" name="category" type="text" />
-
+        </div>
+        
         <div>
           <Label htmlFor="quantity">Quantity</Label>
           <TextInput id="quantity" name="quantity" type="number" />

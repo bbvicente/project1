@@ -82,7 +82,7 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
-    
+
     /**
      * HTTP DELETE request: deletes the product with a particular id
      * @param id
@@ -100,6 +100,6 @@ public class ProductController {
 
     @GetMapping("/current-inventory")
     public Iterable<WarehouseInventorySum> currTotalWarehouseInventory(){
-        return service.currWarehouseInventory();
+        return service.currTotalWarehouseInventory();
     }
 }

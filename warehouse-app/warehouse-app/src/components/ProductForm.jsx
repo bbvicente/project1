@@ -36,7 +36,7 @@ export const ProductForm = () => {
       .then(data => data.json())
       .then((returnedData) => {
         console.log(returnedData)
-        setMessage("Succesfully created new product with id " + returnedData?.id)
+        setMessage("Succesfully updated warehouse!")
       })
       .catch(err => {
         console.log(err);

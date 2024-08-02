@@ -69,7 +69,7 @@ const WarehouseList = () =>  {
                                                             if(!response.ok){
                                                                 throw new Error('Something went wrong')
                                                             }
-                                                            navigate('/warehouses');
+                                                            navigate('/success-delete-page');
                                                          }).catch((e) => {console.log(e)});
                                                     }} className = 'delete-button' intent="danger">Delete</Button>
                                                 </td>

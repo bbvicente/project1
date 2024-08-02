@@ -11,7 +11,7 @@ export default function Products() {
   const navigate = useNavigate();
 
     return (<>
-        <h1>Productss</h1>
+        <h1>Products</h1>
 
         <main>
            

@@ -2,6 +2,8 @@ package com.skillstorm.models;
 
 import java.util.List;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -38,6 +40,7 @@ public class Warehouse {
     private int capacity;
 
     @OneToMany(mappedBy = "warehouse", targetEntity = Product.class)
+    @Cascade(CascadeType.ALL)
     @JsonBackReference
     List<Product> products;
     

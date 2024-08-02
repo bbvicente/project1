@@ -29,7 +29,7 @@ public class ProductService {
     public Iterable<Product> findAllProducts() {
         return repo.findAll();
     }
-    
+
     /**
      * Queries the Product database and return the product with a particular id
      * @param id
@@ -58,7 +58,6 @@ public class ProductService {
         System.out.println(capacity);
 
         if((currWarehouseInventory(wh_id) + p.getQuantity()) < capacity){
-            System.out.println("Capacity not exceeded");
             return repo.save(p);
         } else {
             throw new RuntimeException("Capacity exceeded");
@@ -93,7 +92,7 @@ public class ProductService {
         return repo.sumQuantityByWarehouse(id);
     }
 
-    public Iterable<WarehouseInventorySum> currWarehouseInventory(){
+    public Iterable<WarehouseInventorySum> currTotalWarehouseInventory(){
         return repo.totalCurrWarehouseInventory();
     }
 }

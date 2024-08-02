@@ -23,6 +23,7 @@ const ProductList = () =>  {
             .then(returnedData => {
                 console.log(returnedData);
                 setProducts(returnedData);
+                console.log(returnedData);
                 setLoaded(true);
             })
             .catch(err => { alert(err); console.log(err) })
@@ -51,6 +52,7 @@ const ProductList = () =>  {
                                     products.map(
                                         products => (
                                             <tr key={products.id}>
+                                                <td>{products.id}</td>
                                                 <td>{products.category}</td>
                                                 <td>{products.quantity}</td>
                                                 <td>{products.storageLocation}</td>
@@ -67,7 +69,7 @@ const ProductList = () =>  {
                                                             if(!response.ok){
                                                                 throw new Error('Something went wrong')
                                                             }
-                                                            navigate('/products');
+                                                            navigate('/success-delete-page');
                                                          }).catch((e) => {console.log(e)});
                                                     }} className = 'delete-button' intent="danger">Delete</Button>
                                                 </td>

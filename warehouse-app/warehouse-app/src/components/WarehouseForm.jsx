@@ -34,7 +34,7 @@ export const WarehouseForm = () => {
       .then(data => data.json())
       .then((returnedData) => {
         console.log(returnedData)
-        setMessage("Succesfully created new warehouse with id " + returnedData?.id)
+        setMessage("Succesfully updated warehouse!")
       })
       .catch(err => {
         console.log(err);

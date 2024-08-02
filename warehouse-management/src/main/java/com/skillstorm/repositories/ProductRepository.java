@@ -16,7 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
     Integer sumQuantityByWarehouse(@Param("warehouseId") long warehouseId); 
 
     //all warehouses current inventory - product
-    @Query(value = "SELECT wh.name AS name, SUM(p.quantity) AS quantity, wh.capacity AS capacity FROM Product p INNER JOIN Warehouse wh ON p.warehouse.id = wh.id  GROUP BY wh.id")
+    @Query(value = "SELECT wh.name AS name, COALESCE(SUM(p.quantity),0) AS quantity, wh.capacity AS capacity FROM Product p INNER JOIN Warehouse wh ON p.warehouse.id = wh.id  GROUP BY wh.id")
     List<WarehouseInventorySum> totalCurrWarehouseInventory();
     
 }
