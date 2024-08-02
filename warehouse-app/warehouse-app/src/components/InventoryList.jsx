@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Grid, GridContainer, Table, Button } from '@trussworks/react-uswds';
 
+{/** This component renders a list of the warehouse inventory */}
 export const InventoryList = () =>  {
-
-    // TODO fetch data from backend and display in table
-    // when the component is mounted
 
     const url = "http://localhost:8080/products/current-inventory";
 
@@ -22,8 +20,7 @@ export const InventoryList = () =>  {
                 setInventory(returnedData);
                 setLoaded(true);
             })
-            //.catch(err => { alert(err); console.log(err) })
-            //<Alert type="error" heading="Error status" headingLevel="h4">{testText}</Alert>
+            .catch(err => { alert(err); console.log(err) })
 
     }, [])
 

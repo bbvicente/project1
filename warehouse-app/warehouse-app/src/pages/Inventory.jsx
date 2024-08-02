@@ -6,7 +6,7 @@ export default function Inventory() {
       <h1>Current Inventory</h1>
 
         <main className="form-container">
-
+            {/** List of the warehouse inventory */}
             <GridContainer className="container-center" containerSize="desktop">
               <InventoryList />
             </GridContainer>

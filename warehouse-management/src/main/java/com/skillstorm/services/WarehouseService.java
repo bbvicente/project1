@@ -13,6 +13,10 @@ public class WarehouseService {
 
     private WarehouseRepository repo;
     
+    /**
+     * Injection of the Warehouse Repository
+     * @param repo
+     */
     public WarehouseService(WarehouseRepository repo){
         this.repo = repo;
     }

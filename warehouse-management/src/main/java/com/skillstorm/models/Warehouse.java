@@ -18,6 +18,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 
+/**
+ * Warehouse Entity
+ */
 @Entity
 @Table(name = "warehouses")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
@@ -44,9 +47,15 @@ public class Warehouse {
     @JsonBackReference
     List<Product> products;
     
+    /**
+     * No-args constructor
+     */
     public Warehouse() {
     }
 
+    /**
+     * Constructor with arguments
+     */
     public Warehouse(int warehouseId, String name, String city, String state, int capacity) {
         this.id = warehouseId;
         this.name = name;
@@ -55,46 +64,85 @@ public class Warehouse {
         this.capacity = capacity;
     }
 
+    /**
+     * Returns a warehouse id
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Returns the warehouse
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the city the warehouse is located
+     * @return city
+     */
     public String getCity() {
         return city;
     }
 
+    /**
+     * Returns the state the warehouse is located
+     * @return state
+     */
     public String getState() {
         return state;
     }
 
+    /**
+     * Returns the capacity of the warehouse
+     * @return capacity
+     */
     public int getCapacity() {
         return capacity;
     }
 
+    /**
+     * Sets the id value
+     */
     public void setId(int warehouseId) {
         this.id = warehouseId;
     }
 
+    /**
+     * Sets the warehouse name value
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Sets the warehouse city value
+     */
     public void setCity(String city) {
         this.city = city;
     }
 
+    /**
+     * Sets the warehouse state value
+     */
     public void setState(String state) {
         this.state = state;
     }
 
+    /**
+     * Sets the warehouse capacity value
+     */
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
+    /**
+     * Overrides the toString()
+     * @return a String with all the warehouse info
+     */
     @Override
     public String toString() {
         return "Warehouse [warehouseId=" + id + ", name=" + name + ", city=" + city + ", state=" + state

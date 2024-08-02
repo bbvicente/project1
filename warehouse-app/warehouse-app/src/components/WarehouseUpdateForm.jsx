@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Label, TextInput, Form, Button, Alert, Select } from "@trussworks/react-uswds";
 
+{/** Form to update the info of a warehouse */}
 export const WarehouseUpdateForm = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");

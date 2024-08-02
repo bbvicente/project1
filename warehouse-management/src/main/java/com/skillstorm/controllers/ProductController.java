@@ -56,6 +56,25 @@ public class ProductController {
         }
     }
 
+     /**
+     * HTTP GET request: gets the current inventory of the warehouse with a particular
+     * @param id
+     * @return sum of quantity of the products in a particular warehouse
+     */
+    @GetMapping("/current-inventory/{id}")
+    public int currWarehouseInventory(@PathVariable int id){
+        return service.currWarehouseInventory(id);
+    }
+
+     /**
+     * HTTP GET request: List of the current inventory in all warehouses 
+     * @return a list of the sum of the quantity of the products in each warehouse
+     */
+    @GetMapping("/current-inventory")
+    public Iterable<WarehouseInventorySum> currTotalWarehouseInventory(){
+        return service.currTotalWarehouseInventory();
+    }
+
     /**
      * HTTP POST request: creates a new product, adds it to the database or updates it if it exists
      * @param p
@@ -93,13 +112,4 @@ public class ProductController {
         service.deleteProduct(id);
     }
 
-    @GetMapping("/current-inventory/{id}")
-    public int currWarehouseInventory(@PathVariable int id){
-        return service.currWarehouseInventory(id);
-    }
-
-    @GetMapping("/current-inventory")
-    public Iterable<WarehouseInventorySum> currTotalWarehouseInventory(){
-        return service.currTotalWarehouseInventory();
-    }
 }

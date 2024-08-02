@@ -9,8 +9,9 @@ import { ProductForm } from './components/ProductForm'
 import { Routes, Route } from 'react-router-dom'
 import { WarehouseUpdateForm } from './components/WarehouseUpdateForm'
 import { ProductUpdateForm } from './components/ProductUpdatedForm'
-import { SuccessDeletePage } from './pages/SuccessDeletePage'
+import { SuccessPage } from './pages/SuccessPage'
 
+{/** The application for the warehouse management system */}
 function App() {
 
   return (
@@ -19,7 +20,7 @@ function App() {
         <div className='main-body'>
           <Routes>
             <Route path='/' element={<Warehouses/>}></Route>
-            <Route path='/success-delete-page' element={<SuccessDeletePage/>}></Route>
+            <Route path='/success-delete-page' element={<SuccessPage/>}></Route>
             <Route path='/products' element={<Products/>}></Route>
             <Route path='/inventory' element={<Inventory/>}></Route>
             <Route path='/create-warehouse' element={<WarehouseForm/>}></Route>

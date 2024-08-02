@@ -3,10 +3,8 @@ import { useEffect } from "react";
 import { Grid, GridContainer, Table, Button } from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
 
+{/** This component renders a list of products */}
 const ProductList = () =>  {
-
-    // TODO fetch data from backend and display in table
-    // when the component is mounted
 
     const url = "http://localhost:8080/products";
 

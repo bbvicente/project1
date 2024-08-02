@@ -38,6 +38,22 @@ public class ProductService {
     public Optional<Product> findProductById(int id) {
         return repo.findById(id);
     }
+
+    /**
+     * The current inventory of the warehouse with a particular
+     * @param id
+     */
+    public int currWarehouseInventory(int id){
+        return repo.sumQuantityByWarehouse(id);
+    }
+
+    /**
+     * List of the current inventory in all warehouses 
+     * @return a list of the sum of the quantity of the products in each warehouse
+     */
+    public Iterable<WarehouseInventorySum> currTotalWarehouseInventory(){
+        return repo.totalCurrWarehouseInventory();
+    }
     
    /**
      * Creates a new product and adds it to the database or updates it if it exists
@@ -86,13 +102,5 @@ public class ProductService {
      */
     public void deleteProduct(int id) {
         repo.deleteById(id);
-    }
-
-    public int currWarehouseInventory(int id){
-        return repo.sumQuantityByWarehouse(id);
-    }
-
-    public Iterable<WarehouseInventorySum> currTotalWarehouseInventory(){
-        return repo.totalCurrWarehouseInventory();
     }
 }

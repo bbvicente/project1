@@ -1,6 +1,7 @@
 import React from 'react'
 
-export const SuccessDeletePage = () => {
+{/** Success Page */}
+export const SuccessPage = () => {
   return (
       <div>
         <h2>Successfully Deleted!</h2>
