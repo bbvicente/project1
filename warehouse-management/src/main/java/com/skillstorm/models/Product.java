@@ -2,11 +2,8 @@ package com.skillstorm.models;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +15,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "products")
@@ -38,13 +34,9 @@ public class Product {
     @Column(length = 7)
     private String storageLocation;
 
-    //dateIn
-    //dateOut
-
     //warehouse_id (FK)
     @ManyToOne
-    @Cascade(CascadeType.PERSIST)
-    @NotNull
+    @Cascade(CascadeType.ALL)
     @JoinColumn(name = "warehouse_id")
     @JsonIdentityReference(alwaysAsId = true)
     private Warehouse warehouse;

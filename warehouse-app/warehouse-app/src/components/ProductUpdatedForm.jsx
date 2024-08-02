@@ -1,21 +1,22 @@
 
 import { useState } from 'react';
-import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
+import { Label, TextInput, Form, Button, Alert, Select } from "@trussworks/react-uswds";
 
-export const WarehouseForm = () => {
+export const WarehouseUpdateForm = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   function handleSubmit(e) {
 
 
-    const url = "http://localhost:8080/warehouses";
+    const url = "http://localhost:8080/warehouses/"; 
     // prevent the page reloading
     e.preventDefault();
 
     // grab the data from the form
     const data = new FormData(e.target);
 
-    const newWarehouse = {
+    const updatedWarehouse = {
+        id: data.get("id"),
         name: data.get("name"),
         city: data.get("city"),
         state: data.get("state"),
@@ -24,18 +25,15 @@ export const WarehouseForm = () => {
 
     e.target.reset();
 
-    fetch(url, {
-      method: "POST",
+    fetch(url + updatedWarehouse.id, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(newWarehouse)
+      body: JSON.stringify(updatedWarehouse)
     })
-      .then(data => data.json())
-      .then((returnedData) => {
-        console.log(returnedData)
-        setMessage("Succesfully created new warehouse with id " + returnedData?.id)
-      })
+      .then(response => console.log(response)
+      )
       .catch(err => {
         console.log(err);
         setError(err)
@@ -45,11 +43,16 @@ export const WarehouseForm = () => {
 
   return (
     <>
-      <h1>Create a Warehouse</h1>
+      <h1>Update a Warehouse</h1>
 
       <Form onSubmit={handleSubmit} className="form-container">
+        <Label htmlFor="id">Warehouse ID</Label>
+        <TextInput id="id" name="id" type="number"/>
+
+        <div>
         <Label htmlFor="name">Warehouse Name</Label>
         <TextInput id="name" name="name" type="text" />
+        </div>
 
         <div>
           <Label htmlFor="city">City</Label>

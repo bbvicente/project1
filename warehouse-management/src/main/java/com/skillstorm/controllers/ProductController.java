@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.models.Product;
-import com.skillstorm.models.Warehouse;
 import com.skillstorm.models.WarehouseInventorySum;
 import com.skillstorm.services.ProductService;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/products")
@@ -100,6 +98,7 @@ public class ProductController {
     public int currWarehouseInventory(@PathVariable int id){
         return service.currWarehouseInventory(id);
     }
+
     @GetMapping("/current-inventory")
     public Iterable<WarehouseInventorySum> currTotalWarehouseInventory(){
         return service.currWarehouseInventory();

@@ -10,6 +10,7 @@ export default function NavBar() {
             <img src={hummel} alt='Hummel' width={'150'}></img>
             <ul>
                 <li className='active'><Link to = '/'>Warehouses</Link></li>
+                <li className='active'><Link to = '/products'>Products</Link></li>
                 <li className='active'><Link to = '/inventory'>Inventory</Link></li>
             </ul>
         </nav>

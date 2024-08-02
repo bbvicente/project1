@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import { Grid, GridContainer, Table, Button } from '@trussworks/react-uswds';
 import { useNavigate } from "react-router-dom";
 
-const WarehouseList = () =>  {
+const ProductList = () =>  {
 
     // TODO fetch data from backend and display in table
     // when the component is mounted
 
-    const url = "http://localhost:8080/warehouses";
+    const url = "http://localhost:8080/products";
 
-    const [warehouses, setWarehouses] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const WarehouseList = () =>  {
             .then(data => data.json()) 
             .then(returnedData => {
                 console.log(returnedData);
-                setWarehouses(returnedData);
+                setProducts(returnedData);
                 setLoaded(true);
             })
             .catch(err => { alert(err); console.log(err) })
@@ -40,28 +40,26 @@ const WarehouseList = () =>  {
                         <Table bordered className="table-border">
                             <thead>
                                 <tr>
-                                    <th>WH#</th>
-                                    <th>Name</th>
-                                    <th>City</th>
-                                    <th>State</th>
-                                    <th>Capacity</th>
+                                    <th>Category</th>
+                                    <th>Quantity</th>
+                                    <th>Storage Location</th>
+                                    <th>Warehouse ID</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {loaded ?
-                                    warehouses.map(
-                                        warehouses => (
-                                            <tr key={warehouses.id}>
-                                                <td>{warehouses.id}</td>
-                                                <td>{warehouses.name}</td>
-                                                <td>{warehouses.city}</td>
-                                                <td>{warehouses.state}</td>
-                                                <td>{warehouses.capacity}</td>
+                                    products.map(
+                                        products => (
+                                            <tr key={products.id}>
+                                                <td>{products.category}</td>
+                                                <td>{products.quantity}</td>
+                                                <td>{products.storageLocation}</td>
+                                                <td>{products.warehouse_id.id}</td> {/**To be fixed */}
                                                 <td>
-                                                    <Button onClick={() => navigate("/update-warehouse")
-                                                    }className = 'update-button' intent="primary" >Update</Button>
+                                                    <Button onClick={() => navigate("/update-product")
+                                                    }className = 'update-button' intent="primary">Update</Button>
                                                     <Button onClick={(e) => {
-                                                        const delUrl = url + '/' + warehouses.id;
+                                                        const delUrl = url + '/' + products.id;
                                                         console.log(delUrl);
                                                         fetch(delUrl, {method: 'DELETE', headers:{
                                                             'Content-Type': 'application/json'}
@@ -69,7 +67,7 @@ const WarehouseList = () =>  {
                                                             if(!response.ok){
                                                                 throw new Error('Something went wrong')
                                                             }
-                                                            navigate('/warehouses');
+                                                            navigate('/products');
                                                          }).catch((e) => {console.log(e)});
                                                     }} className = 'delete-button' intent="danger">Delete</Button>
                                                 </td>
@@ -89,4 +87,4 @@ const WarehouseList = () =>  {
     );
 }
 
-export default WarehouseList
+export default ProductList

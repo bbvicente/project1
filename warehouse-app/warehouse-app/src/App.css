@@ -42,21 +42,33 @@ body{
 
 .container-center{
   display:flex;
+  line-height: 4cap;
+  justify-content: space-between;
+
 }
 
 .form-container{
-  padding: 2rem;
   line-height: 4cap;
   display:inline;
+  font-size: 1.5rem;
 }
 
 .create-button{
   background-color: rgb(235, 165, 35);
-  text-align: right;
-  position: absolute;
-  right: 30px;
+  display:flex;
+  justify-content: space-between;
 }
 
 .table-border{
-  border-color: aqua;
+  border-color: rgb(17, 30, 30);
+  align-content: space-between;
+}
+
+.update-button{
+  background-color: rgb(68, 173, 238);
+  margin: 1rem;
+}
+
+.delete-button{
+  background-color: rgb(225, 59, 70);
 }

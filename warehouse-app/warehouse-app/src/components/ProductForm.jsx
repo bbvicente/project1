@@ -1,15 +1,14 @@
 
 import { useState } from 'react';
-import { Label, TextInput, Form, Button, Select, Alert } from "@trussworks/react-uswds";
+import { Label, TextInput, Form, Button, Alert } from "@trussworks/react-uswds";
 
 export const ProductForm = () => {
-
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   function handleSubmit(e) {
 
 
-    const url = "http://localhost:8080/products"; // TODO store in env file instead of hardcoding
+    const url = "http://localhost:8080/products"; 
     // prevent the page reloading
     e.preventDefault();
 
@@ -17,11 +16,11 @@ export const ProductForm = () => {
     const data = new FormData(e.target);
 
     const newProduct = {
-        pCategory: data.get("category"),
-        pQuatity: data.get("quatity"),
-        pStorageLoc: data.get("storageLocation"),
-        warehouse: {
-          id: data.get("warehouse")
+        category: data.get("category"),
+        quantity: data.get("quantity"),
+        storageLocation: data.get("storageLocation"),
+        warehouse_id: {
+          id: data.get("warehouse_id")
         }
     }
 
@@ -48,57 +47,34 @@ export const ProductForm = () => {
 
   return (
     <>
-      <h2>Create a Product</h2>
+      <h1>Create a Product</h1>
 
-      <Form onSubmit={handleSubmit}>
-        <Label htmlFor="name">Product Category</Label>
+      <Form onSubmit={handleSubmit} className="form-container">
+        <Label htmlFor="category">Product Category</Label>
         <TextInput id="category" name="category" type="text" />
 
         <div>
           <Label htmlFor="quantity">Quantity</Label>
           <TextInput id="quantity" name="quantity" type="number" />
         </div>
-          
+
         <div>
-          <Label htmlFor="storageLocation">Quantity</Label>
-          <Select id="storageLocation" name="storageLocation" required>
-            <option>- Select -</option>
-            <option value="SB1">Football Storage Location</option>
-            <option value="SB2">Basketball Storage Location</option>
-            <option value="SB3">Voleyball Storage Location</option>
-            <option value="SB4">Handball Storage Location</option>
-            <option value="SB5">Baseball Storage Location</option>
-            <option value="SB6">Scoccer Storage Location</option>
-          </Select>
+          <Label htmlFor="storageLocation">Storage Location</Label>
+          <TextInput id="storageLocation" name="storageLocation" type="text" />
         </div>
 
         <div>
-          <Label htmlFor="warehouse">Warehouse</Label>
-          <Select id="warehouse" name="warehouse" required>
-            <option>- Select -</option>
-            <option value="DBC1">DBC1</option>
-            <option value="DBC2">DBC2</option>
-            <option value="DBC3">DBC3</option>
-            <option value="DBC4">DBC4</option>
-            <option value="DBC5">DBC5</option>
-            <option value="DBC6">DBC6</option>
-            <option value="DBC7">DBC7</option>
-            <option value="DBC8">DBC8</option>
-            <option value="DBC9">DBC9</option>
-            <option value="DBC10">DBC10</option>
-          </Select>
+          <Label htmlFor="warehouse_id">Warehouse</Label>
+          <TextInput id="warehouse_id" name="warehouse_id" type="number" />
         </div>
 
         <Button type="submit">Submit</Button>
 
       </Form>
       {
-        // TODO choose a nicer alert with a close button
-        // make sure to reset the message and error state
         message && <Alert type="success" heading="Success status" headingLevel="h4">
           {message}
         </Alert>
-        
       }
 
     </>
